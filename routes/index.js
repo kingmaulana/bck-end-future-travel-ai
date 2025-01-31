@@ -4,7 +4,7 @@ import tripRoute from './trip.js';
 
 const router = express.Router();
 
-// router.use('/user', userRoute);
+router.use('/user', userRoute);
 router.use('/trip', tripRoute);
 
 export default router;

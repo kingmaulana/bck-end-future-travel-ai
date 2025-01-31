@@ -3,7 +3,7 @@ import UserController from '../controllers/userController.js';
 
 const router = express.Router();
 
-// router.post('/login', UserController.login);
+router.post('/login', UserController.login);
 // router.post('/google-login', UserController.googleLogin);
 
 export default router;
