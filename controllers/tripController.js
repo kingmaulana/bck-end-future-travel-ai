@@ -6,6 +6,11 @@ class TripController {
             const result = await chatSession.sendMessage(userPrompt);
             const responseText = await result.response.text();
             
+            if(!userPrompt) {
+               res.status(400).json({
+                    message: "Prompt cannot be empty"
+                })
+            }
             // Format the response as valid JSON
             const formattedResponse = {
                 success: true,

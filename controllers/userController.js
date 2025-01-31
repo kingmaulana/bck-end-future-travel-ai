@@ -17,18 +17,23 @@ class UserController {
                 access_token
             })
         } catch (error) {
-            console.log("🚀 ~ UserController ~ login ~ error:", error)
+            res.status(401).json({
+                message: "Invalid email or password"
+            })
         }
     }
 
 
-    static async googleLogin(req, res, next) {
+    static async googleLogin(req, res) {
         try {
             const { googleToken } = req.body
             // console.log("🚀 ~ UserController ~ googleLogin ~ googleToken:", googleToken)
-            if (!googleToken) {
-                throw { name: "InvalidGoogleToken", message: "Missing google token" };
-            }
+
+            if(!googleToken) {
+                res.status(400).json({
+                     message: "Missing google token"
+                 })
+             }
             const client = new OAuth2Client();
             const ticket = await client.verifyIdToken({
                 idToken: googleToken,
